@@ -7,15 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		934813211D74FFC900E32BE4 /* UsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934813201D74FFC900E32BE4 /* UsernameViewController.swift */; };
 		938C24FA1D7395E8008DAAF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C24F91D7395E8008DAAF0 /* AppDelegate.swift */; };
 		938C24FC1D7395E8008DAAF0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C24FB1D7395E8008DAAF0 /* ViewController.swift */; };
 		938C24FF1D7395E8008DAAF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 938C24FD1D7395E8008DAAF0 /* Main.storyboard */; };
 		938C25011D7395E8008DAAF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 938C25001D7395E8008DAAF0 /* Assets.xcassets */; };
 		938C25041D7395E8008DAAF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 938C25021D7395E8008DAAF0 /* LaunchScreen.storyboard */; };
+		938C250C1D74F1EC008DAAF0 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C250B1D74F1EC008DAAF0 /* CollectionViewController.swift */; };
 		CD94FB169282563BB87AA73A /* Pods_EmojiTransmitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98388C4BD464F8EED94CAA59 /* Pods_EmojiTransmitter.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		934813201D74FFC900E32BE4 /* UsernameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsernameViewController.swift; sourceTree = "<group>"; };
 		938C24F61D7395E8008DAAF0 /* EmojiTransmitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmojiTransmitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		938C24F91D7395E8008DAAF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		938C24FB1D7395E8008DAAF0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -23,6 +26,7 @@
 		938C25001D7395E8008DAAF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		938C25031D7395E8008DAAF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		938C25051D7395E8008DAAF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		938C250B1D74F1EC008DAAF0 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		98388C4BD464F8EED94CAA59 /* Pods_EmojiTransmitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EmojiTransmitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFF57F7FA7A6DAB89B61DA36 /* Pods-EmojiTransmitter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EmojiTransmitter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EmojiTransmitter/Pods-EmojiTransmitter.debug.xcconfig"; sourceTree = "<group>"; };
 		EA4E5C6B6C8A27D65ED2ED3E /* Pods-EmojiTransmitter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EmojiTransmitter.release.xcconfig"; path = "Pods/Target Support Files/Pods-EmojiTransmitter/Pods-EmojiTransmitter.release.xcconfig"; sourceTree = "<group>"; };
@@ -65,7 +69,9 @@
 				8901A1C9907E9C732652AC63 /* Pods */,
 				6FDA80B790189EFAA31A68CA /* Frameworks */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		938C24F71D7395E8008DAAF0 /* Products */ = {
 			isa = PBXGroup;
@@ -79,6 +85,8 @@
 			isa = PBXGroup;
 			children = (
 				938C24F91D7395E8008DAAF0 /* AppDelegate.swift */,
+				938C250B1D74F1EC008DAAF0 /* CollectionViewController.swift */,
+				934813201D74FFC900E32BE4 /* UsernameViewController.swift */,
 				938C24FB1D7395E8008DAAF0 /* ViewController.swift */,
 				938C24FD1D7395E8008DAAF0 /* Main.storyboard */,
 				938C25001D7395E8008DAAF0 /* Assets.xcassets */,
@@ -212,7 +220,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				938C250C1D74F1EC008DAAF0 /* CollectionViewController.swift in Sources */,
 				938C24FC1D7395E8008DAAF0 /* ViewController.swift in Sources */,
+				934813211D74FFC900E32BE4 /* UsernameViewController.swift in Sources */,
 				938C24FA1D7395E8008DAAF0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
