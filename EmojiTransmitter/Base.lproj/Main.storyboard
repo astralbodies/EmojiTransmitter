@@ -46,7 +46,7 @@
                     <toolbarItems>
                         <barButtonItem enabled="NO" title="Next" id="fiZ-tF-Zej">
                             <connections>
-                                <segue destination="BYZ-38-t0r" kind="show" id="Mit-w5-t5h"/>
+                                <segue destination="BYZ-38-t0r" kind="show" identifier="usernameSelected" id="Mit-w5-t5h"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -78,12 +78,12 @@
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="H7X-My-JbT">
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😬" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Luw-MT-YWo">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🕑" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Luw-MT-YWo">
                                         <fontDescription key="fontDescription" type="system" pointSize="150"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTW-I8-JCn">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTW-I8-JCn">
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -112,9 +112,11 @@
                     <connections>
                         <outlet property="emojiLabel" destination="Luw-MT-YWo" id="mnh-DN-FCm"/>
                         <outlet property="usernameLabel" destination="MTW-I8-JCn" id="uE7-2a-WQx"/>
+                        <segue destination="uxP-aA-TpT" kind="unwind" identifier="websocketDisconnected" unwindAction="websocketDisconnectedUnwindWithUnwindSegue:" id="VrI-gT-FZ5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="uxP-aA-TpT" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="207" y="54"/>
         </scene>

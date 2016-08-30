@@ -26,6 +26,7 @@ import Starscream
 class ViewController: UIViewController {
   @IBOutlet var emojiLabel: UILabel!
   @IBOutlet var usernameLabel: UILabel!
+  var username = ""
   
   var socket = WebSocket(url: URL(string: "ws://localhost:1337/")!, protocols: ["chat"])
   
@@ -34,6 +35,12 @@ class ViewController: UIViewController {
     
     socket.delegate = self
     socket.connect()
+    
+    navigationItem.hidesBackButton = true
+  }
+
+  deinit {
+    socket.disconnect(forceTimeout: 0)
   }
   
   @IBAction func selectedEmojiUnwind(unwindSegue: UIStoryboardSegue) {
@@ -42,7 +49,7 @@ class ViewController: UIViewController {
       sendMessage(emoji)
     }
   }
-
+  
   private func sendMessage(_ message: String) {
     socket.write(string: message)
   }
@@ -50,11 +57,11 @@ class ViewController: UIViewController {
 
 extension ViewController : WebSocketDelegate {
   public func websocketDidConnect(_ socket: Starscream.WebSocket) {
-    socket.write(string: "iPhone Simulator")
+    socket.write(string: username)
   }
   
   public func websocketDidDisconnect(_ socket: Starscream.WebSocket, error: NSError?) {
-    print("websocketDidDisconnect error: \(error)")
+    performSegue(withIdentifier: "websocketDisconnected", sender: self)
   }
   
   /* Message format:
@@ -79,7 +86,7 @@ extension ViewController : WebSocketDelegate {
   }
   
   public func websocketDidReceiveData(_ socket: Starscream.WebSocket, data: Data) {
-    print("websocketDidReceiveData data: \(data)")
+    
   }
 }
 

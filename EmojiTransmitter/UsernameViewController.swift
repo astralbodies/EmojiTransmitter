@@ -24,13 +24,27 @@ import UIKit
 
 class UsernameViewController : UIViewController {
   @IBOutlet var nextButtonItem: UIBarButtonItem!
+  var username = ""
   
   @IBAction func usernameDidChange(textField: UITextField) {
     if let text = textField.text {
       let hasText = text.characters.count > 0
       nextButtonItem.isEnabled = hasText
+      username = text
     } else {
       nextButtonItem.isEnabled = false
+      username = ""
     }
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "usernameSelected",
+      let vc = segue.destination as? ViewController {
+      vc.username = username
+    }
+  }
+
+  @IBAction func websocketDisconnectedUnwind(unwindSegue: UIStoryboardSegue) {
+    
   }
 }
