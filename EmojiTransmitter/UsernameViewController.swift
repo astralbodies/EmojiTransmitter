@@ -22,7 +22,7 @@
 
 import UIKit
 
-class UsernameViewController : UIViewController {
+final class UsernameViewController : UIViewController {
   @IBOutlet var nextButtonItem: UIBarButtonItem!
   var username = ""
   
@@ -39,12 +39,13 @@ class UsernameViewController : UIViewController {
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "usernameSelected",
-      let vc = segue.destination as? ViewController {
-      vc.username = username
+      let viewController = segue.destination as? ViewController {
+      viewController.username = username
     }
   }
 
   @IBAction func websocketDisconnectedUnwind(unwindSegue: UIStoryboardSegue) {
-    
+    username = ""
+    nextButtonItem.isEnabled = false
   }
 }

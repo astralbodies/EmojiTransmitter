@@ -23,7 +23,7 @@
 import UIKit
 import Starscream
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
   @IBOutlet var emojiLabel: UILabel!
   @IBOutlet var usernameLabel: UILabel!
   var username = ""
@@ -41,11 +41,12 @@ class ViewController: UIViewController {
 
   deinit {
     socket.disconnect(forceTimeout: 0)
+    socket.delegate = nil
   }
   
   @IBAction func selectedEmojiUnwind(unwindSegue: UIStoryboardSegue) {
-    if let vc = unwindSegue.source as? CollectionViewController,
-      let emoji = vc.selectedEmoji() {
+    if let viewController = unwindSegue.source as? CollectionViewController,
+      let emoji = viewController.selectedEmoji() {
       sendMessage(emoji)
     }
   }
@@ -86,7 +87,7 @@ extension ViewController : WebSocketDelegate {
   }
   
   public func websocketDidReceiveData(_ socket: Starscream.WebSocket, data: Data) {
-    
+    // Noop - Must implement since it's not optional in the protocol
   }
 }
 
