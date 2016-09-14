@@ -51,8 +51,13 @@ final class ViewController: UIViewController {
     }
   }
   
-  private func sendMessage(_ message: String) {
+  fileprivate func sendMessage(_ message: String) {
     socket.write(string: message)
+  }
+
+  fileprivate func messageReceived(_ message: String, senderName: String) {
+    emojiLabel.text = message
+    usernameLabel.text = senderName
   }
 }
 
@@ -80,10 +85,10 @@ extension ViewController : WebSocketDelegate {
       let messageData = jsonDict["data"] as? NSDictionary,
       let messageAuthor = messageData["author"] as? String,
       let messageText = messageData["text"] as? String {
-      emojiLabel.text = messageText
-      usernameLabel.text = messageAuthor
+
+      messageReceived(messageText, senderName: messageAuthor)
     }
-    
+
   }
   
   public func websocketDidReceiveData(_ socket: Starscream.WebSocket, data: Data) {
