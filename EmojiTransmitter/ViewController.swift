@@ -21,29 +21,18 @@
  */
 
 import UIKit
-import Starscream
 
 final class ViewController: UIViewController {
   @IBOutlet var emojiLabel: UILabel!
   @IBOutlet var usernameLabel: UILabel!
   var username = ""
   
-  var socket = WebSocket(url: URL(string: "ws://localhost:1337/")!, protocols: ["chat"])
-  
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    socket.delegate = self
-    socket.connect()
     
     navigationItem.hidesBackButton = true
   }
 
-  deinit {
-    socket.disconnect(forceTimeout: 0)
-    socket.delegate = nil
-  }
-  
   @IBAction func selectedEmojiUnwind(unwindSegue: UIStoryboardSegue) {
     if let viewController = unwindSegue.source as? CollectionViewController,
       let emoji = viewController.selectedEmoji() {
@@ -52,7 +41,7 @@ final class ViewController: UIViewController {
   }
   
   fileprivate func sendMessage(_ message: String) {
-    socket.write(string: message)
+    print("NOOP - sendMessage: \(message)")
   }
 
   fileprivate func messageReceived(_ message: String, senderName: String) {
@@ -60,39 +49,3 @@ final class ViewController: UIViewController {
     usernameLabel.text = senderName
   }
 }
-
-extension ViewController : WebSocketDelegate {
-  public func websocketDidConnect(_ socket: Starscream.WebSocket) {
-    socket.write(string: username)
-  }
-  
-  public func websocketDidDisconnect(_ socket: Starscream.WebSocket, error: NSError?) {
-    performSegue(withIdentifier: "websocketDisconnected", sender: self)
-  }
-  
-  /* Message format:
-   * {"type":"message","data":{"time":1472513071731,"text":"😍","author":"iPhone Simulator","color":"orange"}}
-   */
-  public func websocketDidReceiveMessage(_ socket: Starscream.WebSocket, text: String) {
-    guard let data = text.data(using: .utf16),
-      let jsonData = try? JSONSerialization.jsonObject(with: data, options: []),
-      let jsonDict = jsonData as? NSDictionary,
-      let messageType = jsonDict["type"] as? String else {
-        return
-    }
-    
-    if messageType == "message",
-      let messageData = jsonDict["data"] as? NSDictionary,
-      let messageAuthor = messageData["author"] as? String,
-      let messageText = messageData["text"] as? String {
-
-      messageReceived(messageText, senderName: messageAuthor)
-    }
-
-  }
-  
-  public func websocketDidReceiveData(_ socket: Starscream.WebSocket, data: Data) {
-    // Noop - Must implement since it's not optional in the protocol
-  }
-}
-
